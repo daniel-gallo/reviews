@@ -1,0 +1,17 @@
+<!doctype html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='uva.svg') }}" height="25px">
+        <a href="{{ url_for('index') }}">All courses</a>
+        <a href="{{ url_for('verify_email_get') }}">Verify email</a>
+    </nav>
+
+    <main>{% block main %}{% endblock %}</main>
+</body>

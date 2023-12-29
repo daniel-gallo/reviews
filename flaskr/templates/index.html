@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Reviews{% endblock %}
+{% block main %}
+    <h1>UvA AI master courses</h1>
+
+    <table>
+        <tr>
+            <th>Course name</th>
+            <th>Rating</th>
+            <th>Difficulty</th>
+        </tr>
+        {% for course in courses %}
+            <tr>
+                <td><a href="{{ url_for('course_get', course_short_name=course.short_name) }}">{{ course.name }}</a></td>
+                <td>{% if course.mean_rating %}{{ "%.1f"|format(course.mean_rating) }}{% else %}N/A{% endif %}</td>
+                <td>{% if course.mean_difficulty %}{{ "%.1f"|format(course.mean_difficulty) }}{% else %}N/A{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

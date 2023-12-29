@@ -1,0 +1,100 @@
+/* General */
+
+html {
+    font-size: 1.25em;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    max-width: 70ch;
+    padding: .5em;
+    margin: auto;
+    line-height: 1.75;
+}
+
+/* Navbar */
+nav {
+    background-color: black;
+    overflow: hidden;
+}
+
+nav a, nav img {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 1em 0.75em;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Links */
+a {
+    color: black;
+}
+
+/* Table */
+table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+}
+
+th {
+    border-bottom: 2px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+tr~tr:hover {
+    background-color: #ddd;
+}
+
+table a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* Review */
+.review {
+    border: solid black;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+hr {
+     border: 1px solid black;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+input, textarea, select {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.error {
+    color: orangered;
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Add a review for {{ course.short_name }}{% endblock %}
+{% block main %}
+    <h1>Add a review for {{ course.short_name }}</h1>
+    <form method="post">
+        <label for="email">Email ending in @student.uva.nl (will <b>not</b> be shown publicly)</label>
+        <input name="email" id="email" type="email" required>
+        <label for="nickname">Nickname (will be shown publicly)</label>
+        <input name="nickname" id="nickname" type="text" required>
+        <label for="year">In what academic year did you take this course?</label>
+        <select name="year" id="year">
+            <option value="2023/2024">2023/2024</option>
+            <option value="2022/2023">2022/2023</option>
+            <option value="2021/2022">2021/2022</option>
+            <option value="2020/2021">2020/2021</option>
+        </select>
+        <label for="rating">Rating (0-10)</label>
+        <input name="rating" id="rating" type="number" min="0" max="10" required>
+        <label for="difficulty">Difficulty (0-10)</label>
+        <input name="difficulty" id="difficulty" type="number" min="0" max="10" required>
+        <label for="workload">Workload (hours / week)</label>
+        <input name="workload" id="workload" type="number" min="0" max="168" required>
+        <label for="review">Review</label>
+        <textarea name="review" id="review"></textarea>
+        <input type="submit" value="Submit review">
+    </form>
+
+    <div class="error">{{ error }}</div>
+
+{% endblock %}

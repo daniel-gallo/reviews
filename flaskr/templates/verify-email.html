@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Verify email{% endblock %}
+
+{% block main %}
+    <h1>Verify email</h1>
+
+    When you write a review, we send an email to the address you provided to verify that you are indeed a student at UvA. If you cannot find it, it's probably in the spam folder ;)
+
+    <form method="post">
+        <label for="code">Paste the code you received here</label>
+        <input name="code" id="code" type="text" minlength="36" maxlength="36" required>
+        <input type="submit" value="Make my review public!">
+    </form>
+    <div class="error">{{ error }}</div>
+{% endblock %}

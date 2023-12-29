@@ -1,0 +1,39 @@
+# fly.toml app configuration file generated for reviews on 2023-12-27T16:53:32+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "reviews"
+primary_region = "ams"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "5000"
+  # (Set as secrets)
+  # MAIL_SERVER
+  # MAIL_PORT
+  # MAIL_USERNAME
+  # MAIL_PASSWORD
+  # MAIL_USE_TLS
+  # MAIL_USE_SSL
+  # DATABASE_URL
+
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[mounts]
+  source = "reviews"
+  destination = "/mnt/reviews"

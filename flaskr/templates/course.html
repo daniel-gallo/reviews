@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ course.short_name }}{% endblock %}
+{% block main %}
+    <h1>{{ course.name }}</h1>
+    <div>Offered in period {{ course.block }}</div>
+    <div><b>Mean rating: </b>{% if course.mean_rating %}{{ "%.1f"|format(course.mean_rating) }}{% else %}N/A{% endif %}</div>
+    <div><b>Mean difficulty: </b>{% if course.mean_difficulty %}{{ "%.1f"|format(course.mean_difficulty) }}{% else %}N/A{% endif %}</div>
+    <div><b>Mean workload: </b>{% if course.mean_workload %}{{ "%.0f"|format(course.mean_workload) }}{% else %}N/A{% endif %}</div>
+
+    <h1>Reviews</h1>
+    Want to write a review? <a href="{{ url_for('add_review_get', course_short_name=course.short_name) }}">Click here!</a>
+    {% for review in reviews %}
+        <div class="review">
+            <div>Posted on <b>{{ review.date.strftime('%B %d, %Y') }}</b> by <b>{{ review.nickname }}</b></div>
+            <div>Rating: {{ review.rating }}</div>
+            <div>Difficulty: {{ review.difficulty }}</div>
+            <div>Workload: {{ review.workload }}</div>
+            <hr>
+            <div>{{ review.review }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}
