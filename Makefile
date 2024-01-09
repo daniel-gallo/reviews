@@ -1,8 +1,5 @@
-include development.env
-export
-
 run-directly:
-	flask --app flaskr/app run --debug
+	DATABASE_URL=development.sqlite flask --app flaskr/app run --debug
 run-with-docker:
 	docker build -t reviews .
 	docker run --env-file development.env -p 127.0.0.1:5000:5000 reviews

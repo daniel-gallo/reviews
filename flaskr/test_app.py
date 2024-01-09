@@ -5,8 +5,7 @@ from contextlib import closing
 
 import pytest
 
-from app import app as app_, implementations
-from emailsender import FakeEmailSender
+from app import app as app_, email_sender
 
 
 def create_temporary_database(db_path):
@@ -25,7 +24,6 @@ def app(tmp_path):
 
     os.environ["DATABASE_URL"] = str(db_path)
     app_.config.update({"TESTING": True})
-    implementations.email_sender = FakeEmailSender()
     yield app_
 
     db_path.unlink()
@@ -81,7 +79,7 @@ def test_review(client):
     assert "Very good course" not in client.get("/CV1").data.decode()
 
     # Verify review
-    sent_email = implementations.email_sender.sent_messages[-1]
+    sent_email = email_sender.sent_messages[-1]
     code = re.search(
         r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
         sent_email["body"],
