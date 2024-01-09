@@ -2,10 +2,8 @@ FROM python:3.10-alpine
 
 WORKDIR reviews
 
-COPY flaskr .
-COPY requirements.txt .
-# development.sqlite will not be used in production
-COPY development.sqlite .
+# development.sqlite is only present locally
+COPY flaskr requirements.txt development.sqlite* ./
 
 RUN pip install -r requirements.txt
 
